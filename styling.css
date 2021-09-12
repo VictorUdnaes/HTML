@@ -1,0 +1,65 @@
+
+    .adjust-line-height {
+        line-height: 1.7em;
+    }
+
+    a{
+        color: dodgerblue;
+    }
+    ul.a {
+        list-style-type: circle;
+        color: dodgerblue;
+    }
+
+    h1 {
+        color: black;
+    }
+
+    hr {
+        background-color: dodgerblue;
+        border-radius: 5px;
+        padding: 2px;
+        width: 1905px;
+        height: 2px;
+    }
+
+    p {
+        position: relative; left: 100; top: -1200;
+        color: black;
+        font-size: 20px;
+        width: 59%;
+        height: 400px;
+        margin: 30px;          
+        padding: 30px;	            
+    }
+
+     #logo{
+        background-color: dodgerblue;
+        border-radius: 5px;
+        width: 100%;
+        height: 60px;
+        margin: 0px;          
+        padding: 30px;	            
+        
+    }
+
+    #undertekst1 {
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: black;
+        font-size: 16px;
+        position:relative; left: 250px; top:-60px;
+        width: 34.8%;
+        
+    }
+    #linktekst {
+        color: dodgerblue;
+        font-size: 23px;
+        width: 10%;
+        height: 480px;
+        margin: 30px;          
+        padding: 20px;	            
+        border: 1px solid black;
+        float: left;
+        line-height: 5em
+        
+    }

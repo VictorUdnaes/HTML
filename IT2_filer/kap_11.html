@@ -111,3 +111,53 @@ html----------------------------------------------------------------------------
 
 </body>
 </html>
+
+------------------------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="9.2_stylesheet.css">
+</head>
+<body>
+    <label for="navn">Navn</label>
+    <input id="navn" type="text" placeholder="eks. Ola Nordmann">
+    <label for="nummer">Mobilnummer</label>
+    <input type="number" id="nummer" placeholder="tlf:">
+    <label for="beskrivelse">beskrivelse</label>
+    <textarea name="beskrivelse" id="beskrivelse" placeholder="kort beskrivelse av deg selv"></textarea>
+
+    <label for="hendelse">Trinn</label>
+    <select name="hendelse" id="event">
+        <option value="vg1">vg1</option>
+        <option value="vg2">vg2</option>
+        <option value="vg3">vg3</option>
+    </select>
+    
+    <button>Generer visittkort</button>
+
+    <div id="visittKort"></div>
+    <script type="text/javascript" src="9.2_javascript.js"></script>
+</body>
+</html>
+
+------------------------------------------------------------------
+var navnEl = document.querySelector("#navn");
+var nummerEl = document.querySelector("#nummer");
+var beskrivelseEl = document.querySelector("#beskrivelse");
+var hendelseEl = document.querySelector("#event");
+var buttonEl = document.querySelector("button");
+var visittKortEl = document.querySelector("#visittKort");
+
+buttonEl.addEventListener("click", klikkFunksjon);
+
+function klikkFunksjon() {
+    visittKortEl.setAttribute("class", "visittKort");
+    visittKortEl.innerHTML += "Navn: " + navnEl.value + "<br>";
+    visittKortEl.innerHTML += "Telefonnummer: " + nummerEl.value + "<br>";
+    visittKortEl.innerHTML += "beskrivelse: " + beskrivelseEl.value + "<br>";
+    visittKortEl.innerHTML += "klasse: " + hendelseEl.value + "<br>"; 
+}

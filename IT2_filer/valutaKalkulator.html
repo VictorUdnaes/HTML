@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input, textarea, select {
+        display: block;
+        margin-top: 2px;
+        margin-bottom: 10px;
+}
+    </style>
+</head>
+<body>
+    <h1>Valuta kalkulator</h1>
+    <input type="number" placeholder="Enter value" id="input"> <br>
+    <label for="pounds">Pounds</label><br>
+        <input type="radio" name="currency" id="pounds"> <br>
+    <label for="dollar">Dollar</label><br>
+        <input type="radio" name="currency" id="dollar"> <br>
+    <label for="euro">Euro</label><br>
+        <input type="radio" name="currency" id="euro"> <br>
+
+    <button>Konverter</button>
+    <p></p>
+
+    <script>
+        var inputEl = document.querySelector("#input");
+        var poundEl = document.querySelector("#pounds");
+        var dollarEl = document.querySelector("#dollar");
+        var euroEl = document.querySelector("#euro");
+        var buttonEl = document.querySelector("button");
+        var pEl = document.querySelector("p");
+        var output = 0;
+
+        buttonEl.addEventListener("click", klikket);
+
+        function klikket () {
+
+            console.log(inputEl);
+            var input = inputEl.value;
+            var type = "";
+            if (poundEl.checked) {
+                output = Number(input)*0.083;
+                type = "pounds";
+                console.log("called");
+            }
+            if (dollarEl.checked) {
+                output = Number(input)*0.11;
+                type = "dollars";
+            }
+            if(euroEl.checked){
+                output = Number(input)*0.097;
+                type = "euros";
+            }
+            console.log(output);
+            pEl.innerHTML = "Konvertert verdi: " + output + " "+ type;
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=p, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: darkorange;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        input{
+            width: 120px;
+        }
+        .kvittering {
+            border: 2px solid black;
+            width: 200px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Velkommen til fornøyelsespark. jippi</h1>
+    <label for="antallVoksne">Antall voksne (295 kr per voksen):</label>
+        <input type="number" id="antallVoksne">
+    <label for="antallStoreBarn">Antall barn 3-16 år (149kr per pers):</label>
+        <input type="number" id="antallStoreBarn">
+    <label for="antallSmåBarn">Antall spedbarn 0-3 år (gratis):</label>
+        <input type="number" id="antallSmåBarn">
+    <h3>Barnevogn?</h3>
+    <label for="barnevognJa">Ja</label> 
+        <input type="radio" name="barnevogn" id="barnevognJa">
+    <label for="barnevognNei">Nei</label>
+        <input type="radio" name="barnevogn" id="barnevognNei">
+    <br>
+    <label for="badeland">tilgang til badeland (139 kr per pers):</label>
+        <input type="number" id="tilgangTilBadeland" placeholder="antall personer">
+    <br>
+    <label for="godteposer">godteposer til barn (99 kr):</label>
+        <input type="number" id="godteposer" placeholder="antall godteposer">
+    <button>generer kvittering</button>
+    
+
+<script>
+    var antallVoksneEl = document.querySelector("#antallVoksne");
+    var antallStoreBarnEL = document.querySelector("#antallStoreBarn");
+    var antallSmåBarnEl = document.querySelector("#antallSmåBarn");
+    var barnevognJaEl = document.querySelector("#barnevognJa");
+    var barnevognNeiEl = document.querySelector("#barnevognNei");
+    var tilgangTilBadelandEl = document.querySelector("#tilgangTilBadeland");
+    var godteposerEl = document.querySelector("#godteposer");
+    var buttonEl = document.querySelector("button");
+    var bodyEl = document.querySelector("body");
+    var pEL = document.createElement("p");
+
+    buttonEl.addEventListener("click", kvittering);
+
+    function kvittering () {
+        pEL.innerHTML = "";
+        pEL.setAttribute("class", "kvittering");
+        var antallVoksne = antallVoksneEl.value;
+        var antallStoreBarn = antallStoreBarnEL.value;
+        var antallSmåBarn = antallSmåBarnEl.value;
+        var maxPersoner = Number(antallVoksne) + Number(antallStoreBarn) + Number(antallSmåBarn); 
+        var antallBadeland = tilgangTilBadelandEl.value;
+        var antallGodteposer = godteposerEl.value;
+        var barnevogn = "Nei";
+        if (barnevognJaEl.checked) {
+            barnevogn = "ja";
+        }
+        if (antallBadeland > maxPersoner) {
+            antallBadeland = maxPersoner;
+        }
+        if (antallGodteposer > (maxPersoner - Number(antallVoksne))) {
+            antallGodteposer = (maxPersoner - Number(antallVoksne));
+        }
+        var pris = 0;
+        pris += Number(antallVoksne) * 295;
+        pris += Number(antallStoreBarn) * 149;
+        pris += Number(antallBadeland) * 139;
+        pris += Number(antallGodteposer) * 99;
+
+        pEL.innerHTML += "Kvittering: <br>";
+        pEL.innerHTML += "Antall voksne: "+ antallVoksne + "<br>";
+        pEL.innerHTML += "Antall store barn: "+ antallStoreBarn + "<br>";
+        pEL.innerHTML += "Antall små barn: "+ antallSmåBarn + "<br>";
+        pEL.innerHTML += "Barnevogn? "+ barnevogn + "<br>";
+        pEL.innerHTML += "Antall badeland-billetter: "+ antallBadeland + "<br>";
+        pEL.innerHTML += "Antall godteposer: "+ antallGodteposer + "<br>";
+        pEL.innerHTML += "Totalpris: "+ pris + " kr <br>";
+        bodyEl.appendChild(pEL);
+    }
+
+
+</script>
+</body>
+</html> 

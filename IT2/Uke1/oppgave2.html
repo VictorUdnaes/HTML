@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oppgave 2</title>
+</head>
+<body>
+    <script>
+
+        console.log(størsteTall(1,10));
+        console.log(størsteTreTall(5,25,15));
+        console.log(partallEllerOddetall(127));
+        console.log(skuddår(2019));
+
+        function størsteTall(tall1, tall2) {
+            if (tall1>tall2) {
+                return tall1;
+            } else if (tall2>tall1) {
+                return tall2;
+            } else return "tallene er like";
+        }
+
+        function størsteTreTall(tall1, tall2, tall3) {
+            if (tall1>tall2 && tall1>tall3) {
+                return tall1;
+            } else if (tall2>tall1 && tall2>tall3) {
+                return tall2;
+            } else if(tall3>tall2 && tall3>tall1) {
+                return tall3;
+            } else return "tallene er like";
+        }
+
+        function partallEllerOddetall(tall) {
+            if (tall%2 == 0) {
+                return "partall";
+            } else return "oddetall";
+        }
+
+        function skuddår(tall) {
+            if (tall%4 == 0) {
+                return true;
+            } else return false;
+        }
+
+    </script>
+</body>
+</html>

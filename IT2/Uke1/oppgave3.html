@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oppgave 3</title>
+    <style>
+        p, button {
+        display: block;
+        margin-top: 2px;
+        margin-bottom: 10px;
+}
+    </style>
+</head>
+<body>
+    <button id="nullstill">Nullstill Maskinen</button>
+    <button id="nyttTall">Nytt tall</button>
+    <p>Gjennomsnitt:</p>
+    <p id="gjennomsnitt"></p>
+    <p>Tall:</p> 
+    <p id="tall"></p>
+
+    <script>
+        var nullstillEl = document.querySelector("#nullstill");
+        var nyttTallEl = document.querySelector("#nyttTall");
+        var gjennomsnittEl = document.querySelector("#gjennomsnitt");
+        var tallEl = document.querySelector("#tall");
+
+        nyttTallEl.addEventListener("click", genererTall);
+        nullstillEl.addEventListener("click", nullstill);
+
+        var gjennomsnitt = 0;
+        var index = 0;
+        var temp = 0;
+    
+        function genererTall() {
+            var tilfeldigTall = Math.floor(Math.random()*100)+1;
+            tallEl.innerHTML += tilfeldigTall + "<br>";
+            index++;
+            gjennomsnitt += tilfeldigTall;
+            temp = gjennomsnitt;
+            gjennomsnitt /= index;
+            gjennomsnittEl.innerHTML = gjennomsnitt;
+            gjennomsnitt = temp;
+        }
+
+        function nullstill() {
+            gjennomsnitt = 0;
+            index = 0;
+            tallEl.innerHTML ="";
+            gjennomsnittEl.innerHTML = "";
+        }
+
+    </script>
+</body>
+</html>

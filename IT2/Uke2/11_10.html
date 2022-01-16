@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>hello there</p>
+    <script>
+        var faktor = 1;
+        var temp = 0;
+        var tabellArray = [];
+        for (var a = 0; a < 10; a++) {
+            var innerArray = [];
+            for (var i = 0; i<11; i++) {
+                temp = i*faktor;
+                innerArray.push(temp);
+            } 
+            tabellArray.push(innerArray); 
+            faktor++;
+        }
+    console.log(tabellArray);
+        
+   
+    </script>
+</body>
+</html>

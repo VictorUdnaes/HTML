@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #e0e0e0;
+            font-family: "Century Gothic", Arial, sans-serif;
+            font-size: 14px;
+            color: #323232;
+        }
+        .innpakning {
+            width: 25%;
+            padding: 5px;
+            margin: auto;
+            background-color: #fefefe;
+        }
+        .box {
+            border: 1px solid black;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <div class="innpakning"></div>
+    <script>
+        
+        var bilmerker = [
+            {forkortelse: "Tesla",
+            bilmerke: "T",
+            land: "USA"
+            },
+            {forkortelse: "Volvo",
+            bilmerke: "sirkel med pil",
+            land: "Sverige"
+            },
+            {forkortelse: "Honda",
+            bilmerke: "H",
+            land: "Japan"
+            },
+            {forkortelse: "Ferrari",
+            bilmerke: "hest",
+            land: "Italia"
+            },
+            {forkortelse: "Mini",
+            bilmerke: "sirkel med vinger",
+            land: "Storbritaina"
+            }
+        ];
+        var overskrifter = ["forkortelser", "bilmerke", "land"];
+
+        lagTabell(overskrifter, bilmerker);
+
+        function lagTabell(overskrifter, innhold) {
+            
+            var tabellEl = document.createElement("table");
+            var tBodyEl = document.createElement("tbody");
+            var bodyEl = document.querySelector("body");
+            var innpakningEl = document.querySelector(".innpakning");
+            var overskrift = "<tr>";
+            for (var i = 0; i<overskrifter.length;i++) {
+                overskrift += "<th>" + overskrifter[i] + "</th>";
+            }
+            overskrift +="</tr>";
+            tBodyEl.innerHTML += overskrift;
+
+            for (var i = 0; i < innhold.length; i++) {
+                var rad = "<tr>";
+                    for (var egenskap in innhold[i]) {
+                            rad += "<td>" + innhold[i][egenskap] + "</td>";
+                        }  
+                rad += "</tr>";    
+                tBodyEl.innerHTML += rad;
+            }
+            tabellEl.appendChild(tBodyEl);
+            innpakningEl.appendChild(tabellEl);
+        
+        }
+    </script>
+</body>
+</html>

@@ -35,10 +35,10 @@
     <h1>Bestilling av reise:</h1>
     <label for="by">By:</label>
     <select name="by" id="by">
+        <option value="New York">New York</option>
         <option value="Roma">Roma</option>
         <option value="St.Petersburg">St.Petersburg</option>
         <option value="Amsterdam">Amsterdam</option>
-        <option value="New York">New York</option>
     </select>
 
     <label for="hotell">Hotell:</label>
@@ -49,14 +49,16 @@
     <input type="radio" name="halvår" id="sommer"> Sommer
     <input type="radio" name="halvår" id="vinter"> Vinter
 
+    <label for="kulturpass">kulturpass for kulturelle aktiviteter (pris kr 700)</label>
+    <input type="checkbox" id="kulturpass">
+
     <label for="dobbeltrom">Antall dobbeltrom:</label>
     <input type="number" id="dobbeltrom">
 
     <label for="enkelttrom">Antall enkeltrom:</label>
     <input type="number" id="enkeltrom">
 
-    <label for="kulturpass">kulturpass for kulturelle aktiviteter (pris kr 700)</label>
-    <input type="checkbox" name="kulturpass">
+    
 
     <h3 id="pris">Totalpris: </h3>
 
@@ -93,40 +95,55 @@
             }
         }
     
-        var byEl = document.querySelector("#by");
-        var hotellEl = document.querySelector("#hotell");
-        var vinterEl = document.querySelector("#vinter");
-        var dobbeltromEl = document.querySelector("#dobbeltrom");
-        var enkeltromEl = document.querySelector("#enkeltrom");
-        var kulturpassEl = document.querySelector("#kulturpass");
-        var prisEl = document.querySelector("#pris");
-        var hoteller = getHotell(byEl.value);
+    var byEl = document.querySelector("#by");
+    var hotellEl = document.querySelector("#hotell");
+    var vinterEl = document.querySelector("#vinter");
+    var dobbeltromEl = document.querySelector("#dobbeltrom");
+    var enkeltromEl = document.querySelector("#enkeltrom");
+    var kulturpassEl = document.querySelector("#kulturpass");
+    var prisEl = document.querySelector("#pris");
+    var hoteller = getHotell(byEl.value);
+    var pris = 0;
 
-        for (var i = 0; i < hoteller.length; i++) {
-            byEl.append("<option value=" + hoteller[i].navn + "> " + hoteller[i].navn + "</option>");
-        }
+    dobbeltromEl.addEventListener("input", nyPris);
+    enkeltromEl.addEventListener("input", nyPris);
+    kulturpassEl.addEventListener("unchecked", nyPris);
+    kulturpassEl.addEventListener("checked", nyPris);
 
-        var pris = 0;
-        for (var i = 0; i < hoteller.length; i++) {
-            for (var i = 0; i < hoteller[i].length; i++) {
-                if(hoteller[i].navn === hotellEl.value) {
-                    if (vinterEl.cheched) {
-                        oppdaterPris((dobbeltromEl.value + enkeltromEl.value)*hoteller[i].vinter);
-                        oppdaterPris(300 * dobbeltromEl.value);
-                    } else oppdaterPris((dobbeltromEl.value + enkeltromEl.value)*hoteller[i].sommer);
-                    if (kulturpassEl.cheched) {
-                        oppdaterPris(700);
+
+    for (var i = 0; i < hoteller.length; i++) {
+        var newOption = document.createElement("option");
+        var text = hoteller[i].navn;
+        var optionText = document.createTextNode(text);
+        newOption.appendChild(optionText);
+        newOption.setAttribute("value", text);
+        hotellEl.appendChild(newOption);
+    }
+    
+    function nyPris(input) {
+        pris = 0;
+            for (var x = 0; x < hoteller.length; x++) {
+                if(hoteller[x].navn === hotellEl.value) {
+
+                    pris += 300 * dobbeltromEl.value;
+                    if (vinterEl.checked) {
+                        pris += dobbeltromEl.value * hoteller[x].vinter;
+                        pris += enkeltromEl.value * hoteller[x].vinter;
+                        
+                    } else { 
+                        pris += (dobbeltromEl.value * hoteller[x].sommer);
+                        pris += enkeltromEl.value * hoteller[x].sommer;
                     }
-                }
+
+                    if(kulturpassEl.checked) {
+                        pris += 700;
+                    }
+                }             
             }
+            prisEl.innerHTML = "Totalpris: " + pris;
         }
-
-        function oppdaterPris(nyPris) {
-            pris+=nyPris;
-            prisEl.innerHTML = "Totalpris" + pris;
-        }
-
 
     </script>
 </body>
+
 </html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <canvas id="mittCanvas" width="1900" height="900"></canvas>
+    <script>
+        var canvas = document.querySelector("#mittCanvas");
+        var ctx = canvas.getContext("2d");
+
+        function tegnTilfeldigeRektangler(antall){
+            for (var i = 0; i < antall; i++) {
+                var xKoordinat = Math.random() * canvas.width;
+                var yKoordinat = Math.random() * canvas.height;
+                var xSize = Math.random() * 100;
+                var ySize = Math.random() * 100;
+
+                ctx.fillStyle = "hsl(" + i * 30 + ", 100%, 70%)";
+                ctx.fillRect(xKoordinat, yKoordinat, xSize, ySize);
+            }
+        }
+        tegnTilfeldigeRektangler(40);
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        function tegnEtTre (x,y) {
+            ctx.fillStyle = "Brown";
+            ctx.fillRect(x,y,40,200);
+            ctx.fillStyle = "green";
+            ctx.fillRect(x-80,y-120,200,200);
+
+        }
+        tegnEtTre(1000,500);
+    </script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="mittCanvas" width="1900" height="900"></canvas>
+    <script>
+        var canvas = document.querySelector("#mittCanvas");
+        var ctx = canvas.getContext("2d");
+        function skrivVictor() {
+            ctx.beginPath();
+            ctx.moveTo(100,50);
+            ctx.lineTo(170,200);
+            ctx.lineTo(260,50);
+            ctx.moveTo(300,50);
+            ctx.lineTo(300,200);
+            ctx.moveTo(500,50);
+            ctx.lineTo(360,50);
+            ctx.lineTo(360,200);
+            ctx.lineTo(500,200);
+            ctx.moveTo(550,50);
+            ctx.lineTo(690,50);
+            ctx.moveTo(620,50);
+            ctx.lineTo(620,200);
+            ctx.moveTo(730,50);
+            ctx.lineTo(870,50);
+            ctx.lineTo(870,200);
+            ctx.lineTo(730,200);
+            ctx.lineTo(730,50);
+            ctx.moveTo(910,50);
+            ctx.lineTo(1050,50);
+            ctx.lineTo(1050,130);
+            ctx.lineTo(910,130);
+            ctx.lineTo(910,50);
+            ctx.lineTo(910,200);
+            ctx.moveTo(910,130);
+            ctx.lineTo(1050,200);
+
+            ctx.strokeStyle ="black";
+            ctx.stroke();
+        }
+
+        function lagTre() {
+            ctx.fillStyle ="green";
+            ctx.fillRect(700,200,200,200);
+            ctx.beginPath();
+            ctx.moveTo(770,600);
+            ctx.lineTo(820,600);
+            ctx.lineTo(790,300);
+            ctx.lineTo(770,300);
+            ctx.lineTo(770,600);
+
+            ctx.moveTo(797,380);
+            ctx.lineTo(820,335);
+            ctx.lineTo(840,335);
+            ctx.lineTo(800,400);
+
+            ctx.strokeStyle = "brown";
+            ctx.fillStyle="brown";
+            ctx.fill();
+            ctx.stroke();
+        }
+
+
+        function ruteNett() {
+            for (var i = 0; i<=2000; i+=20) {
+                ctx.moveTo(i,0);
+                ctx.lineTo(i, 1920);
+            }
+            for (var i = 0; i<=1000; i+=20) {
+                ctx.moveTo(0,i);
+                ctx.lineTo(1920, i);
+            }
+            ctx.strokeStyle = "black";
+            ctx.stroke();
+            console.log(canvas.heigth);
+        }
+
+        function lagSnømann() {
+            
+            ctx.arc(920,500,100,0 , Math.PI*2);
+            ctx.fillStyle = "black";
+            ctx.fill();
+            ctx.stroke();
+            ctx.arc(920,350,80,0 , Math.PI*2);
+            ctx.arc(920,220,60,0 , Math.PI*2);
+            ctx.fillStyle = "lightGrey";
+            ctx.fill();
+        
+
+        }
+        
+
+        function kake() {
+            var x = 920;
+            var y = 500;
+            ctx.arc(x,y,100,0 , (Math.PI*2)*4/7);
+            ctx.lineTo(x,y);
+            ctx.fillStyle = "blue";
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.arc(x,y,100, (Math.PI*2)*4/7, (Math.PI*2)*0.28);
+            ctx.lineTo(x,y);
+            ctx.fillStyle = "green";
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.arc(x,y,100, (Math.PI*2)*4/7, (Math.PI*2)*1/7);
+            ctx.lineTo(x,y);
+            ctx.fillStyle = "red";
+            ctx.fill();
+        }
+        
+        function align() {
+            ctx.fillText("Hei", 240,50);
+            ctx.fillText("På", 250,100);
+            ctx.fillText("deg!", 260,150);
+        }
+        align();
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #mittCanvas {
+            display: block;
+            margin: auto;
+            background-color: #ffffff;
+        }
+
+    </style>
+</head>
+<body>
+    <canvas id="mittCanvas" width="500" height="500"></canvas>
+    <script>
+        var canvas = document.querySelector("#mittCanvas");
+        var ctx = canvas.getContext("2d");
+/*
+        ctx.fillStyle = "green";
+        ctx.fillRect(100,100,250,250);
+        ctx.fillStyle = "brown";
+        ctx.fillRect(205,220,40,270);
+*/  
+        function tilfeldigFarge() {
+            var farger = ["green", "blue", "yellow", "red", "orange"];
+            var randNum = Number(Math.floor(Math.random()*4));
+            return farger[randNum];
+        }
+        
+
+
+        ctx.fillStyle = "grey";
+        ctx.fillRect(100,50,250,450);
+
+        var xCor = 105;
+        var yCor = 55;
+
+    for (var x = 0; x<8; x++) {
+        for (var i = 0; i<5; i++) {
+            ctx.fillStyle = tilfeldigFarge();
+            ctx.fillRect(xCor,yCor,40,40);
+            xCor += 50;
+        }
+        yCor += 50;
+        xCor = 105;
+    }
+      
+    </script>
+</body>
+</html>

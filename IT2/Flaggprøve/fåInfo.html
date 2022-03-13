@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oppgave 1</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: row;
+        }
+
+        img {
+            height: 150px;
+            width: 200px;
+            margin-right: 250px;
+        }
+       
+    </style>
+</head>
+<body>
+
+    <h1>Land:</h1> 
+    <div class="container">
+        <div>
+            <img src="italia.png" id="Italia">
+            <p class="Italia"></p>
+        </div>
+        <div>
+            <img src="norge.png" id="Norge">
+            <p class="Norge"></p>
+        </div>
+        <div>
+            <img src="tyskland.png" id="Tyskland">
+            <p class="Tyskland"></p>
+        </div>
+    </div>  
+    
+
+    <script>
+        var italiaEl = document.querySelector("#Italia");
+        var norgeEl = document.querySelector("#Norge");
+        var tysklandEl = document.querySelector("#Tyskland");
+        var italiaDivEl = document.querySelector(".Italia");
+        var norgeDivEl = document.querySelector(".Norge");
+        var tysklandDivEl = document.querySelector(".Tyskland");
+
+        italiaEl.addEventListener("click", fåInformasjon);
+        norgeEl.addEventListener("click", fåInformasjon);
+        tysklandEl.addEventListener("click", fåInformasjon);
+
+        function fåInformasjon(e) {
+            var land = [//nye land-objekter legges inn her, "element:" må inneholde tilhørende p-element
+                {land: "Italia", hovedstad: "Roma", innbyggere: 2900000, element: italiaDivEl},
+                {land: "Norge", hovedstad: "Oslo", innbyggere: 960000, element: norgeDivEl},
+                {land: "Tyskland", hovedstad: "Berlin", innbyggere: 3600000, element: tysklandDivEl}
+            ];  
+
+            var element = e.target; //henter element fra klick-eventet
+            for (var i = 0; i<land.length;i++) { //går igjennom alle landene og tester om element-id passer med noen i land-arrayet 
+                if (element.id == land[i].land) {
+                    //riktig land funnet:
+                    land[i].element.innerHTML += "land: "+ land[i].land + "<br>hovedstad: "
+                        + land[i].hovedstad + "<br>innbyggere: " + land[i].innbyggere;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

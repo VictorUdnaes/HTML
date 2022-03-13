@@ -1,1 +1,1 @@
-# inneholder oppgaver fra Informasjonsteknologi 2
+# Inneholder oppgaver gjort i Informasjonsteknologi 2

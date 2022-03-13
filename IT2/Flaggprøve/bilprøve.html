@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        
+
+        img {
+            width: 250px;
+            height: 200px;
+        }
+
+        h1 {
+            width: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #bilder {
+            display: flex;
+            flex-direction: row;
+        }
+
+        #button {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .hello{
+            height: 10px;
+        }
+
+        .grønnRamme {
+            border: 1px solid green;
+            padding: 4px;
+        }
+       
+    </style>
+    <title>bilprøve løsning</title>
+</head>
+<body>
+    <h1>Sportsbiler</h1>
+    <div id="button">
+        <button id="alfabetisk">Sorter alfabetisk</button>
+        <button id="pris">Sorter etter pris</button>
+        <button id="vinner">Vis vinner</button>
+    </div>
+    <div id="bilder"></div>
+    
+<script>
+    var h1El = document.querySelector("h1");
+    var alfabetiskEl = document.querySelector("#alfabetisk");
+    var prisEl = document.querySelector("#pris");
+    var bodyEl = document.querySelector("body")
+    var bilderEl = document.querySelector("#bilder"); 
+    var vinnerEl = document.querySelector("#vinner");
+
+    alfabetiskEl.addEventListener("click", sorterAlfabetisk);
+    prisEl.addEventListener("click", sorterEtterPris);
+    vinnerEl.addEventListener("click", finnVinner);
+
+    var biler = 
+        [
+            {
+            merke:"Tesla",modell:"X",aargang:2018,farge:"Sort",bildefil:"tesla_modelX.jpg",pris:580000, stemmer: 0
+            },
+            {
+            merke:"Porche",modell:"911 cab",aargang:2003,farge:"Rød",bildefil:"porche_911.jpg",pris:500000, stemmer: 0
+            },
+            {
+            merke:"Audi",modell:"Q5",aargang:2017,farge:"Hvit",bildefil:"audi_q5.jpg",pris:400000, stemmer: 0
+            },
+            {
+            merke:"BMW",modell:"M3",aargang:2021,farge:"Grønn",bildefil:"bmw_m3.jpg",pris:660000, stemmer: 0
+            }
+        ];
+    
+    var elementArray = [biler.length];
+
+    function klikket(e) {
+        var element = e.target;
+        h1El.innerHTML = element.id.substring(1,element.id.length);
+        biler[Number(element.id.substring(0,1))].stemmer++;
+        lagInnhold();
+    }
+
+    function sorterAlfabetisk() {
+        biler.sort(sammenlignNavn);
+        lagInnhold();
+    }
+
+    function sorterEtterPris() {
+        biler.sort(sammenlignPris);
+        lagInnhold();
+    }
+
+    function sammenlignNavn(a,b) {
+        if (a.merke > b.merke) {
+            return 1;
+        } else if(a.merke < b.merke) {
+            return -1;
+        } else return 0;
+    }
+
+    function sammenlignPris (a,b) {
+        if (a.pris > b.pris) {
+            return -1;
+        } else if(a.pris < b.pris) {
+            return 1;
+        } else return 0;
+    }
+
+    function sammenlingPoeng(a,b) {
+        if (a.stemmer > b.stemmer) {
+            return -1;
+        } else if(a.stemmer < b.stemmer) {
+            return 1;
+        } else return 0;
+    }
+
+    function finnVinner() {
+        biler.sort(sammenlingPoeng);
+        biler[0].setAttribute("class", "grønnRamme"); //Feil, må finne bilde-elementet som korresponderer til det første bilobjektet i det sorterte arrayet.
+    }
+    
+    function lagInnhold(){
+        bilderEl.innerHTML = "";
+        
+        for (var i = 0; i< biler.length; i++) {
+            var bildeDiv = document.createElement("div");
+            var bilde = document.createElement("img");
+            elementArray[i] = bilde;
+            var bildetekst = document.createElement("p");
+            bilde.setAttribute("src", biler[i].bildefil);
+            bilde.setAttribute("id", i + biler[i].merke);
+            bildetekst.innerHTML = "merke: " + biler[i].merke + "<br> årgang: " + biler[i].aargang + "<br> farge: " + biler[i].farge + "<br> pris: " + biler[i].pris  + "<br> stemmer: " + biler[i].stemmer;
+            bildeDiv.appendChild(bilde);
+            bildeDiv.appendChild(bildetekst);
+            bilde.addEventListener("click", klikket);
+            bilderEl.appendChild(bildeDiv);
+            bodyEl.appendChild(bilderEl);
+        } 
+    }
+    lagInnhold();
+       
+    </script>
+</body>
+</html>

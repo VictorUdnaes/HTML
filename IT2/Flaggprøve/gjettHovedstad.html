@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oppgave 2</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        img {
+            width: 300px;
+            height: 200px;
+        }
+        input{
+            width: 300px;
+            height: 30px;
+
+        }
+        button {
+            width: 100px;
+            margin-top: 15px;
+        }
+        p {
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gjett hovedstaden i:</h1>
+    <h2 id="land"></h2>
+    <img src="" alt="" id="flagg">
+    <br>
+    <label for="input">svar:</label> 
+        <input type="text" id="input" placeholder="f.eks Paris">
+    <button>Skjekk svar</button> <br>
+
+    <p id="antallRette">Antall rette: 0</p>
+    
+    <p id="antallGale">Antall gale: 0</p>
+ 
+    <script>
+        var landEl = document.querySelector("#land");
+        var bildeEL = document.querySelector("#flagg");
+        var inputEl = document.querySelector("#input");
+        var buttonEl = document.querySelector("button");
+        var antallRetteEl = document.querySelector("#antallRette");
+        var antallGaleEl = document.querySelector("#antallGale");
+        var valgtLand = "";
+        var antallRette = 0;
+        var antallGale = 0;
+
+        var land = [ //nye land legges inn her, må inneholde samme egenskaper.
+                {land: "Italia", hovedstad: "Roma", innbyggere: 2900000, src: "italia.png"},
+                {land: "Norge", hovedstad: "Oslo", innbyggere: 960000, src: "norge.png"},
+                {land: "Tyskland", hovedstad: "Berlin", innbyggere: 3600000, src: "tyskland.png"},
+                {land: "Danmark", hovedstad: "København", innbyggere: 150000, src: "danmark.jpg"},
+                {land: "Storbritannia", hovedstad: "London", innbyggere: 8800000, src: "storbritannia.png"},
+                {land: "Spania", hovedstad: "Madrid", innbyggere: 3200000, src: "spania.png"},
+            ];
+
+        //Setter inn et nytt flagg med tilhørende navn og lager eventlistener på knappelement.
+        nyttLand();
+        eventListener();
+        
+        function skjekkSvar() {
+            if (inputEl.value.toLowerCase() == valgtLand.hovedstad.toLowerCase()) { //tester om input stemmer med hovedstaden
+                //den stemmer:
+                landEl.innerHTML = "Riktig svar, Hovedstaden i " + valgtLand.land + " er " + valgtLand.hovedstad+ "!";
+                antallRette++;
+                antallRetteEl.innerHTML = "Antall rette: "+ antallRette;
+            } else {
+                //den stemmer ikke:
+                landEl.innerHTML = "Feil svar, Hovedstaden i " + valgtLand.land + " er " + valgtLand.hovedstad;
+                antallGale++;
+                antallGaleEl.innerHTML = "antall gale: "+ antallGale;
+            }
+            //fjerner eventlistener så spilleren ikke kan få flere poeng på samme hovedstad
+            buttonEl.removeEventListener("click", skjekkSvar);
+
+            if (antallRette >= 3) {
+                landEl.innerHTML = "Gratulerer du vant!";
+
+            } else if (antallGale >= 3) {
+                landEl.innerHTML = "Du har brukt opp sjansene dine.";
+                
+            } else {
+                setTimeout(eventListener,3000); //starter knappens eventlistenerer etter 3 sek
+                setTimeout(nyttLand,3000); //gir spiller nytt land etter 3 sek
+            }
+        }
+
+        function nyttLand() { 
+            var randomNumber = Math.floor(Math.random()*land.length);
+            bildeEL.src = land[randomNumber].src; //bruker tilfeldig tall og setter bildeelementets src til en tilfeldig scr fra land-arrayet
+            landEl.innerHTML = land[randomNumber].land;//setter h2 elementet til det koresponderende navnet på landet.
+            valgtLand = land[randomNumber];//lagrer det valgte land-elementet
+        }
+
+        function eventListener() { //lager funksjon for å lage eventlistener for å få timeout() til å funke.
+            buttonEl.addEventListener("click", skjekkSvar);
+        }
+
+    </script>
+</body>
+</html>

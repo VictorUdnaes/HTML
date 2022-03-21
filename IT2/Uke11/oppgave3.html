@@ -1,0 +1,81 @@
+<html>
+<head>
+  <title>Styre en firkant</title>
+  <meta charset="UTF-8">
+  <style>
+  body {
+    background-color: #323232;
+    cursor: none; /* skjuler musepekeren */
+    overflow: hidden; /* hindrer scrollbar */
+  }
+  div {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 50;
+    top: 50;
+    background-color: lightblue;
+  }
+  </style>
+</head>
+<body>
+
+<div></div>
+  
+<script>
+var bodyEl = document.querySelector("body");
+var boksEl = document.querySelector("div");
+
+var venstre = 50;
+var topp = 50;
+
+var fart = 10;
+
+var bredde=window.innerWidth;
+var hoyde=window.innerHeight;
+
+console.log(bredde,hoyde);
+
+bodyEl.addEventListener("keydown", flyttBoks);
+bodyEl.style.backgroundColor = "hsl(" + 100 + "," + 50 + "%, 50%";
+
+function flyttBoks(e) {
+    var element = e.target;
+    console.log(topp, venstre);
+
+    if (venstre > bredde/2) {
+        bodyEl.style.backgroundColor = "hsl(" + 300 + "," + 100 + "%, 50%";
+    } 
+
+    if(topp < hoyde - 60 && venstre < bredde - 60) {
+        if(topp >= 10 && venstre >= 10) {
+            if (e.keyCode === 37) {  // Venstre tast
+                venstre -= fart;
+                boksEl.style.backgroundColor = "hsl(" + e.keyCode * 16 + "," + e.keyCode + 5 + "%, 50%";
+            } else if (e.keyCode === 39) { // Høyre tast
+                venstre += fart;
+                boksEl.style.backgroundColor = "hsl(" + e.keyCode * 3 + "," + e.keyCode + 5 + "%, 50%";
+            } else if (e.keyCode === 38) {  // Oppovertast
+                topp -= fart;
+                boksEl.style.backgroundColor = "hsl(" + e.keyCode * 7 + "," + e.keyCode + 5 + "%, 50%";
+            } else if (e.keyCode === 40) { // Nedovertast
+                topp += fart;
+                boksEl.style.backgroundColor = "hsl(" + e.keyCode * 4 + "," + e.keyCode + 5 + "%, 50%";
+            }
+            boksEl.style.top = topp + "px";
+            boksEl.style.left = venstre + "px";
+        } else {
+        topp += 10;
+        venstre += 10;
+        }
+    } else {
+        topp -= 10;
+        venstre -= 10;
+    }
+    boksEl.style.top = topp + "px";
+    boksEl.style.left = venstre + "px";
+}
+
+</script>  
+</body>
+</html>

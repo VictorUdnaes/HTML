@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5</title>
+
+    <style>
+        div {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            left: 50;
+            top: 50;
+            background-color: lightblue;
+        }
+
+        #screen{
+            height: 100%;
+            width: 100%;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="screen"></div>
+    <script>
+        var bodyEl = document.querySelector("body");
+        bodyEl.addEventListener('click', lagFirkanter, true);
+
+        function lagFirkanter(e) {
+            console.log("called");
+            for (var i = 0; i < 10; i++) {
+                var topp = e.clientY + tilfeldigTall();
+                var venstre = e.clientX + tilfeldigTall();
+                console.log(topp, venstre);
+                var nyBoks = document.createElement("div");
+                nyBoks.style.top = topp;
+                nyBoks.style.left = venstre;
+
+                console.log("style.top = "+ nyBoks.style.top);
+                nyBoks.style.backgroundColor = "hsl(" + e.clientX * 7 + "," + e.clientX + 5 + "%, 50%";
+                bodyEl.appendChild(nyBoks); 
+            }
+        }
+
+        function tilfeldigTall() {
+            return Math.floor(Math.random()*50);
+        }
+    </script>
+</body>
+</html>

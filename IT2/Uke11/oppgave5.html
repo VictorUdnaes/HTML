@@ -11,8 +11,8 @@
             width: 50px;
             height: 50px;
             position: absolute;
-            left: 50px;
-            top: 50px;
+            left: 50;
+            top: 50;
             background-color: lightblue;
         }
 
@@ -32,27 +32,21 @@
         function lagFirkanter(e) {
             console.log("called");
             for (var i = 0; i < 10; i++) {
-                var index = 0;
-                var plusMinus = 1;
-                if (index%2 == 0) {
-                    plusMinus = -1;
-                }
-                var topp = e.clientY + tilfeldigTall()*plusMinus;
-                var venstre =e.clientX + tilfeldigTall()*plusMinus;
-                index++;
-
+                var topp = e.clientY + tilfeldigTall();
+                var venstre = e.clientX + tilfeldigTall();
+                console.log(topp, venstre);
                 var nyBoks = document.createElement("div");
-                nyBoks.style.top = topp + "px";
-                nyBoks.style.left = venstre + "px";
+                nyBoks.style.top = topp;
+                nyBoks.style.left = venstre;
 
                 console.log("style.top = "+ nyBoks.style.top);
-                nyBoks.style.backgroundColor = "hsl(" + topp + "," + venstre + "%, 50%";
+                nyBoks.style.backgroundColor = "hsl(" + e.clientX * 7 + "," + e.clientX + 5 + "%, 50%";
                 bodyEl.appendChild(nyBoks); 
             }
         }
 
         function tilfeldigTall() {
-            return Math.floor(Math.random()*200);
+            return Math.floor(Math.random()*50);
         }
     </script>
 </body>

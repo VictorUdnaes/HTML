@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    html, body {
+        width: 100%;
+        height: 100%;
+    }
+    body {
+        background-color: #323232;
+        cursor: none; /* skjuler musepekeren */
+        overflow: hidden; /* hindrer scrollbar */
+    }
+    div {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div></div>
+  
+<script>
+// Henter body-elementet og div-elementet
+var bodyEl = document.querySelector("body");
+var sirkelEl = document.querySelector("div");
+var xSize = 10;
+var ySize = 0;
+
+// Lytter etter musebevegelser på body-elementet
+bodyEl.addEventListener("mousemove", flyttSirkel);
+
+// Funksjonen flyttSirkel() flytter sirkelen etter musepekeren
+function flyttSirkel(e) {
+  // Setter sirkelens left-egenskap lik musepekerens x-koordinat
+  sirkelEl.style.left = (e.clientX - 25) + "px";
+  sirkelEl.style.width = e.target.clientX/10 + "px";
+
+  // Setter sirkelens top-egenskap lik musepekerens y-koordinat
+  sirkelEl.style.top = (e.clientY - 25) + "px";
+  sirkelEl.style.height = e.target.clientY/10 + "px";
+
+  // Lar musepekerens posisjon styre sirkelens farge
+  sirkelEl.style.backgroundColor = "hsl(" + e.clientX + "," + e.clientY + "% , 50%)";
+  console.log(xSize);
+}
+
+</script>  
+</body>
+</html>
+</body>
+</html>

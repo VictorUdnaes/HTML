@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .innpakning{
+            
+            width: 800px;
+            height: 2000px;
+            background-color: tomato;
+            margin: 50px auto;
+        }
+
+        .innpakning div {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+        }
+
+        .absolutt {
+            position: absolute;
+            left: 50px;        
+            top: 5px;
+        }
+
+        .relativ {
+            position: relative;
+            top: -20px;
+        }
+
+        .fiksert {
+            position: fixed;
+            left: 0px;
+            top: 200px;
+        }
+
+        .ny {
+            height: 100px;
+            width: 100px;
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            background-color: red;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="innpakning">
+        <div class="absolutt">absolutt</div>
+        <div class="relativ">relativ</div>
+        <div class="fiksert">fixed
+            <div class="ny">ny</div>
+        </div>
+        
+    </div>
+</body>
+</html>

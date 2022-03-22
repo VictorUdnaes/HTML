@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8</title>
+    <style>
+        body {
+            background-color: #e0e0e0;
+        }
+
+/*ytre elementer ---------------------------------------------------------------------------------------------------------------------------------------------------------*/
+        .innpakning {
+            width: 100%;
+            height: 950px;
+            margin: 5px auto;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .element1 {
+            width: 100%;
+            flex-grow: 3;
+        }
+        .element2 {
+            margin-left: 120px;
+            width: 1680px;
+            display: flex;
+            flex-direction: row;
+            flex-grow: 4;
+        }
+
+        .element3 {
+            width: 100%;
+            flex-grow: 1;
+        }
+/*element2 indre elementer -----------------------------------------------------------------------------------------------------------------------------------------------*/
+
+        .indreElement1 {
+            background-color: #323232;
+            flex-grow: 3;
+        }
+        .indreElement2 {
+            flex-grow: 1.5;
+            display: flex;
+            flex-direction: column;
+            padding-left: 25px;
+            padding-right: 15px;
+            
+        }
+/*indreElement2 indre elementer ------------------------------------------------------------------------------------------------------------------------------------------*/     
+
+        .rad {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+        .kvadrat {
+            margin-left: 15px;
+            margin-right: 15px;
+            background-color: #323232;
+            flex-grow: 1;
+        }
+        #top {
+            margin-top: 10px;
+        }
+        #bottom {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="innpakning">
+        <div class="element1"></div>
+        <div class="element2">
+            <div class="indreElement1"></div>
+            <div class="indreElement2">
+                <div class="rad">
+                    <div class="kvadrat" id="bottom"></div>
+                    <div class="kvadrat" id="bottom"></div>
+                </div>
+                <div class="rad">
+                    <div class="kvadrat" id="top"></div>
+                    <div class="kvadrat" id="top"></div>
+                </div>
+            </div>
+        </div>
+        <div class="element3"></div>
+    </div>
+    
+</body>
+</html>

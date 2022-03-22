@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6</title>
+    <style>
+        body {
+            background-color: #e0e0e0;
+        }
+
+        .innpakning {
+            width: 100%;
+            height: 950px;
+            margin: 5px auto;
+            background-color: #323232;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .element1 {
+            margin: 5px;
+            width: 100%;
+            background-color: lightgray;
+            flex-grow: 1;
+        }
+        .element2 {
+            margin: 5px;
+            width: 100%;
+            background-color: lightgray;
+            display: flex;
+            flex-direction: row;
+            flex-grow: 2;
+        }
+
+        .element3 {
+            background-color: lightblue;
+            margin: 5px;
+            flex-grow: 1;
+        }
+        .element4 {
+            background-color: lightseagreen;
+            margin: 5px;
+            flex-grow: 6;
+        }
+     
+        
+    </style>
+</head>
+<body>
+    <div class="innpakning">
+        <div class="element1"></div>
+        <div class="element2">
+            <div class="element3"></div>
+            <div class="element4"></div>
+        </div>
+        <div class="element1"></div>
+    </div>
+</body>
+</html>

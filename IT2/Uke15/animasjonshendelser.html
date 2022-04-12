@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AS</title>
+    <style>
+        #boks1 {
+            position: relative;
+            top: 450px;
+            left: 0px;
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            animation-name: høyreVenstre;
+            animation-duration: 8s;
+            animation-iteration-count: infinite;
+        }
+
+        #boks2 {
+            position: relative;
+            top: -50px;
+            left: 900px;
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            background-color: blue;
+            animation-name: oppNed;
+            animation-duration: 8s;
+            animation-iteration-count: infinite;
+            animation-play-state: paused;
+            
+        }
+
+        @keyframes høyreVenstre {
+            0% {left:0px}
+            50% {left:1850px}
+            100% {left:0px}
+        }
+
+        @keyframes oppNed {
+            0% {top:-50px}
+            50% {top:800px}
+            100% {top:-50px}
+        }
+
+    </style>
+</head>
+<body>
+    <div id="boks1"></div>
+    <div id="boks2"></div>
+
+    <script>
+        boks1El = document.querySelector("#boks1");
+        boks2El = document.querySelector("#boks2");
+        var iteration = 0;
+        boks1El.addEventListener("animationiteration", oddetallsRepetisjon);
+        boks2El.addEventListener("animationend", oddetallsRepetisjon);
+
+        function oddetallsRepetisjon(e) {
+            var element = e.target;
+            iteration++;
+            console.log(iteration);
+            if (prime(iteration)) {
+                boks2El.style.animationPlayState = "running";
+            } else {
+                boks2El.style.animationPlayState = "paused";
+            } 
+             
+        }
+
+        function prime(n){
+            if (n===1){
+                return false;
+            } else if(n === 2){
+                return true;
+            } else {
+                for(var x = 2; x < n; x++){
+                    if(n % x === 0){
+                        return false;
+                    }
+                }
+                return true;  
+            }
+}
+
+
+    </script>
+</body>
+</html>

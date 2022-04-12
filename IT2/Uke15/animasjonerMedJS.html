@@ -37,13 +37,15 @@
     <div class="innpakning"></div>
     <script>
         var innpakningEl = document.querySelector(".innpakning");
-        var antallBokser = 30;
-
+        var antallBokser = 10;
+        innpakningEl.style.width = antallBokser * 20 +"px";
         for (var i = 0; i<antallBokser; i++) {
+            var rand = Math.random()*5;
             var nyBoks = document.createElement("div");
             nyBoks.className = "animer";
             nyBoks.style.left = i * 20 + "px";
             nyBoks.style.animationDelay = i * 0.2 + 2 + "s";
+            nyBoks.style.animationDuration = rand +"s";
             innpakningEl.appendChild(nyBoks);
         }
     </script>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bildekarusell</title>
+    <style>
+        body{
+            background-color: #e0e0e0;
+        }
+        #bildekarusell{
+            width: 600px;
+            height: 150px;
+            position: relative;
+            margin: 150px auto;
+            overflow: hidden;
+        }
+        .bilde{
+            width: 600px;
+            height: 150px;
+            position: absolute;
+            left: 0px;
+            background-image: "url('img1.jpg')";
+        }
+        @keyframes innFraHoyre{
+            from { left: 600px; }
+            to { left: 0px; }
+        }
+        @keyframes utTilVenstre{
+            from { left: 0px; }
+            to { left: -600px; }
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="Bildekarusell">
+        <div class="bilde"> </div>
+        <div class="bilde"> </div>
+        <div class="bilde"> </div>
+        <div class="bilde"> </div>
+    </div>
+
+    <script>
+        var bilder = document.querySelectorAll(".bilde");
+        var indexSynligBilde = 0;
+        var indexNesteBilde;
+        var tid = 3000; 
+        var bildefiler = ["img1.jpg", "img2.jpg", "img3.jpg","img4.png"];
+        
+        for (var i = 0; i < bilder.length; i++) {
+            bilder[i].style.backgroundImage = "url(bilder/" + bildefiler[i] + "/";
+
+            if (i != 0) {
+                bilder[i].style.display = "none";
+            }
+        }
+        setTimeout (flytt, tid);
+
+        function flytt() {
+            console.log("flytt");
+            if (indexSynligBilde === bilder.length - 1) {
+                indexNesteBilde = 0; 
+            } else {
+                indexNesteBilde = indexSynligBilde + 1;
+            }
+
+            bilder[indexNesteBilde].style.left = "800px";
+            bilder[indexNesteBilde].style.display = "initial";
+            bilder[indexNesteBilde].style.animation = "innFraHoyre 2s forwards";
+            bilder[indexNesteBilde].style.animation = "utTilVenstre 2s forwards";
+            indexSynligBilde = indexNesteBilde;
+
+            setTimeout (flytt, tid);
+        }
+
+    </script>
+
+</body>
+</html>

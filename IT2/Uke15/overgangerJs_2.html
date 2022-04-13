@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4</title>
+    <style>
+        body{
+            height: 100%;
+            width: 100%;
+        }
+        .boks{
+            position: absolute;
+            top: 350px;
+            left: 570px;
+            height: 50px;
+            width: 50px;
+            background-color: blue;
+            transition: all;
+            transition-duration: 2s;
+        }
+        .høyre {
+            width: 100px;
+        }
+        .venstre {
+            width: 20px;
+        }
+        .opp {
+            top: 300px;
+            height: 100px;
+        }
+        .ned{
+            top: 350px;
+        }
+    </style>
+</head>
+<body>
+    <div class="boks"></div>
+    <script>
+    var boksEl = document.querySelector(".boks");   
+    var bodyEl = document.querySelector("body");
+    bodyEl.addEventListener("keydown", trykket);
+    
+    function trykket(e) {
+        var keyCode = e.keyCode;
+        switch(keyCode) {
+            case 37: //venstre
+                boksEl.classList.remove("høyre");
+                boksEl.classList.add("venstre");
+                console.log("37 called");
+                break;
+            case 38: //opp
+                boksEl.classList.remove("ned")
+                boksEl.classList.add("opp");
+                break;
+            case 39: //høyre
+                boksEl.classList.remove("venstre")
+                boksEl.classList.add("høyre");
+                break;
+            case 40: //ned
+                boksEl.classList.remove("opp")
+                boksEl.classList.add("ned");
+                break;
+            
+
+        }
+    }
+
+    
+/*
+    function knappfunksjon() {
+        if (knappEl.innerHTML == "start") {
+            knappEl.innerHTML = "tilbake";
+            boksEl.classList.remove("flyttVenstre");
+            boksEl.classList.add("flyttHøyre");
+        } else {
+            knappEl.innerHTML = "start";
+            boksEl.classList.remove("flyttHøyre");
+            boksEl.classList.add("flyttVenstre");
+        }
+    }
+    */
+    </script>
+</body>
+</html>

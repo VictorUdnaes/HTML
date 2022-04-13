@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5</title>
+    <style>
+        div {
+            width: 150px;
+            height: 150px;
+            background-color: #359689;
+            transition-property: width;
+            transition-duration: 2s
+        }
+        div:hover{
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        var divEL = document.querySelector("div");
+        divEL.addEventListener("transitionend", ferdig);
+        var index = 1;
+        
+        function ferdig() {
+            if(index%2 != 0){
+                divEL.innerHTML = "FERDIG";
+            } else divEL.innerHTML = "";
+            index++;
+        }
+    </script>
+</body>
+</html>

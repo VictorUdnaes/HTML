@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #323232;
+        }
+        .innpakning {
+            width: 1870px;
+            height: 900px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .boks {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            margin: 5px;
+            animation: roter linear infinite;
+            
+        }
+
+        @keyframes roter {
+            0% {transform: rotate(0deg); background-color: red;}
+            50% {transform: rotate(45deg); background-color: yellow;}
+            100% {transform: rotate(180deg); background-color: red;}
+        }
+
+        @keyframes skaler {
+            0% {transform: scale(0); background-color: red;}
+            50% {transform: rotate(0.5); background-color: yellow;}
+            100% {transform: rotate(1); background-color: red;}
+        }
+    </style>
+</head>
+<body>
+    <div class="innpakning"></div>
+    <script>
+        var innpakningEL = document.querySelector(".innpakning");
+        innpakningEL.style.width = window.innerWidth;
+        innpakningEL.style.height = window.innerheight;
+        for (var i = 0; i<407; i++) {
+            var div = document.createElement("div");
+            div.className = "boks";
+            var rand = Math.floor(Math.random()*10)+1;
+            if (rand%2 == 0) {
+                div.style.animation = "skaler linear infinite";
+            }
+            div.style.animationDuration = (Math.random() * 5 + 1) + "s";
+            innpakningEL.appendChild(div);
+        }
+    </script>
+</body>
+</html>

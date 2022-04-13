@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #323232;
+            overflow: hidden;
+        }
+        div {
+            position: absolute;
+            top: 20%;
+            left: 30%;
+            margin: 100px auto;
+            border-radius: 50%;
+            border: 7px solid tomato;
+        }
+        .sirkel1{
+            animation: skaler 2s infinite linear;
+        }
+        .sirkel2{
+            animation: skaler 3.5s infinite ease-in-out;
+        }
+        .sirkel3{
+            animation: skaler 4.2s linear;
+        }
+        @keyframes skaler {
+            0% {transform: scale(0);}
+            100% {transform: scale(6);}
+        }
+    </style>
+</head>
+<body>
+    <script>
+        bodyEl = document.querySelector("body");
+        for (var i = 0; i<10; i++) {
+            var randOne = Math.random()*1000;
+            var randTwo = Math.random()*500;
+            console.log(randOne);
+            console.log(randTwo);
+            var sirkel1 = document.createElement("div");
+            var sirkel2 = document.createElement("div");
+            var sirkel3 = document.createElement("div");
+            
+            sirkel1.style.top = randOne + "px";
+            sirkel1.style.left = randTwo + "px";
+            
+            sirkel2.style.top = randOne +"px";
+            sirkel2.style.left = randTwo + "px";
+
+            sirkel3.style.top = randOne + "px";
+            sirkel3.style.left = randTwo + "px";
+            
+            sirkel1.setAttribute("class", "sirkel1");
+            sirkel2.setAttribute("class", "sirkel2");
+            sirkel3.setAttribute("class", "sirkel3");
+            
+            bodyEl.appendChild(sirkel1);
+            bodyEl.appendChild(sirkel2);
+            bodyEl.appendChild(sirkel3);
+        }
+        
+    </script>
+</body>
+</html>

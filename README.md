@@ -1,1 +1,1 @@
-# Inneholder oppgaver gjort i Informasjonsteknologi 2
+# Inneholder prosjekter skrevet i HTML, CSS og Javascript
